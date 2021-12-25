@@ -95,7 +95,7 @@ public class ThingsManager {
                     break;
                 case 3:
                     Clothes clothes = new Clothes(count);
-                    addThing(clothes);
+                        addThing(clothes);
                     break;
                 case 4:
                     Thing thing = new Thing(count);
