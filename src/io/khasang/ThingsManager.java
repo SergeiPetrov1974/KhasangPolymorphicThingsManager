@@ -32,6 +32,7 @@ public class ThingsManager {
 
     public void removeThingById() {
         System.out.println("Введите id вещи, которую Вы хотите удалить\n_");
+        checkNumber();
         int id = scanner.nextInt();
         scanner.nextLine();
         int index = getThingIndexById(id);
@@ -45,6 +46,7 @@ public class ThingsManager {
 
     public void showThingInfoById() {
         System.out.println("Введите id вещи, информацию о которой хотите увидеть\n_");
+        checkNumber();
         int id = scanner.nextInt();
         scanner.nextLine();
         int index = getThingIndexById(id);
@@ -66,7 +68,7 @@ public class ThingsManager {
     }
 
     public void removeAll() {
-        for (int i = collection.size() -1; i >= 0; i--) {
+        for (int i = collection.size() - 1; i >= 0; i--) {
             collection.remove(i);
         }
         System.out.println("Все элементы коллекции удалены\n");
@@ -81,7 +83,7 @@ public class ThingsManager {
             System.out.println("3. Одежда.");
             System.out.println("4. Другая вещь.");
             System.out.println("5. Выход.");
-
+            checkNumber();
             num = scanner.nextInt();
             scanner.nextLine();
             switch (num) {
@@ -95,7 +97,7 @@ public class ThingsManager {
                     break;
                 case 3:
                     Clothes clothes = new Clothes(count);
-                        addThing(clothes);
+                    addThing(clothes);
                     break;
                 case 4:
                     Thing thing = new Thing(count);
@@ -108,5 +110,12 @@ public class ThingsManager {
                     break;
             }
         } while (num != 5);
+    }
+
+    private void checkNumber() {
+        while (!scanner.hasNextInt()) {
+            System.out.println("Ввод необходимо сделать цифрами '1,2,3'. Повторите попытку.");
+            scanner.next();
+        }
     }
 }

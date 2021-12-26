@@ -13,6 +13,7 @@ public class Book extends Thing{
         this.scanner = new Scanner(System.in);
         this.author = scanner.nextLine();
         System.out.println("Введите ISBN новой книги");
+        checkNumber();
         this.ISBN = scanner.nextLong();
         scanner.nextLine();
         System.out.printf("%nСоздана \"%s\" автор %s, её id %d, ISBN: %d%n",name, author, id, ISBN);
@@ -23,6 +24,13 @@ public class Book extends Thing{
         this.author = author;
         this.ISBN = ISBN;
         this.scanner = new Scanner(System.in);
+    }
+
+    private void checkNumber() {
+        while (!scanner.hasNextInt()) {
+            System.out.println("Ввод ISBN новой книги необходимо сделать цифрами '1,2,3'. Повторите попытку.");
+            scanner.next();
+        }
     }
 
     public String getAuthor() {

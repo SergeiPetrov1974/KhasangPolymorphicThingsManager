@@ -24,7 +24,7 @@ public class Menu {
             System.out.println("4. Удалить вещь из воллекции");
             System.out.println("5. Удалить все вещи из воллекции");
             System.out.println("6. Выйти");
-
+            checkNumber();
             choose = scanner.nextInt();
             scanner.nextLine();
             switch (choose) {
@@ -50,5 +50,11 @@ public class Menu {
                     break;
             }
         } while (choose != 6);
+    }
+    private void checkNumber() {
+        while (!scanner.hasNextInt()) {
+            System.out.println("Ввод необходимо сделать цифрами '1,2,3'. Повторите попытку.");
+            scanner.next();
+        }
     }
 }
